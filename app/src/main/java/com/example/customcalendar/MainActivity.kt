@@ -13,8 +13,6 @@ class MainActivity : AppCompatActivity() {
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
         val calendar= Calendar.getInstance()
-        calendar.set(Calendar.MONTH,9)//현재 달 넣어주기
-        calendar.set(Calendar.YEAR,21)
         binding.calendarView.setOnItemClickListener(object :CalendarView.OnItemClickListener{
             override fun onItemClick(v: View, year: Int, month: Int, day: Int) {
 

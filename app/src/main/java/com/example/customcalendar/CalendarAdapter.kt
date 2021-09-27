@@ -28,6 +28,7 @@ class CalendarAdapter(context: Context, days: ArrayList<Date>, inputMonth: Int, 
     private val calender=calendar
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun getView(position: Int, view: View?, parent: ViewGroup): View {
+        day1.get(position).month
         var view = view
         val calendar = calender
         val date = getItem(position)
@@ -44,18 +45,17 @@ class CalendarAdapter(context: Context, days: ArrayList<Date>, inputMonth: Int, 
         (view as TextView).setTypeface(null, Typeface.NORMAL)
         view.setTextColor(Color.parseColor("#595959")) // inputMonth는 ViewPager의 해당 페이지에 출력하는 Month를 표시.
         if (month != inputMonth) { // 아래의 경우 해당월이 아닌 경우에는 GridView에 표시되지 않도록 설정한 예.
-            view.visibility=View.VISIBLE
-            Log.d(view.text.toString(),"dsdsd")
+            view.visibility=View.INVISIBLE
         }
         if (month == calendarToday.get(Calendar.MONTH) && year == calendarToday.get(Calendar.YEAR) && day == calendarToday.get(Calendar.DATE)) { // 오늘의 날짜에 하고싶은 짓(?)을 정의 } // 날짜를 텍스트뷰에 설정
 
         }
-
         view.text = calendar.get(Calendar.DATE).toString()
         view.setOnClickListener {
-            listener?.onItemClick(it,year, month+1, day)//클릭했을때 일어날 이벤트를 인터페이스로 연결해줌
+            Log.d(month.toString(),day.toString())
+            listener?.onItemClick(it,year, month+1, day)
         }
-       return view
+        return view
     }
 
 }

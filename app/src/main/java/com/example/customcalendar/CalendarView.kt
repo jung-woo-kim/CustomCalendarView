@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.GridView
 import android.widget.LinearLayout
+
+
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -31,7 +33,7 @@ class CalendarView: LinearLayout {
     }
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
     private fun assignUiElements() {
-    // layout is inflated, assign local variables to components
+        // layout is inflated, assign local variables to components
 
         gridView = findViewById(R.id.calendar)!!
     }
@@ -55,7 +57,7 @@ class CalendarView: LinearLayout {
             inputCalendar.add(Calendar.DAY_OF_MONTH, 1)
         } // 그리드 업데이트
         val adapter=CalendarAdapter(context, cells, now_month ,inputCalendar)
-        adapter.setOnItemClickListener(object :CalendarAdapter.OnItemClickListener{
+        adapter.setOnItemClickListener(object : CalendarAdapter.OnItemClickListener{
             override fun onItemClick(v: View, year: Int, month: Int, day: Int) {
                 listener?.onItemClick(v, year, month, day)
             }
