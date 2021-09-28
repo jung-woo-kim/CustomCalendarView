@@ -45,7 +45,7 @@ class CalendarView: LinearLayout {
         this@CalendarView.month=inputCalendar.get(Calendar.MONTH)+1
         this@CalendarView.day=inputCalendar.get(Calendar.DATE)
         inputCalendar.set(Calendar.DAY_OF_MONTH, 1)//전부 첫날짜를 1일로 바꿈
-        var now_month=inputCalendar.get(Calendar.MONTH)+1
+
         // 여기서 빼주는 값 1의 경우 한 주의 시작요일에 따라 다르게 설정해주면 됨.
         //일요일부터 시작하는 관계로 1을 감산해주었음.
         val monthBeginningCell = inputCalendar.get(Calendar.DAY_OF_WEEK)-1
@@ -56,12 +56,13 @@ class CalendarView: LinearLayout {
             cells.add(inputCalendar.time)
             inputCalendar.add(Calendar.DAY_OF_MONTH, 1)
         } // 그리드 업데이트
-        val adapter=CalendarAdapter(context, cells, now_month ,inputCalendar)
+        val adapter=CalendarAdapter(context, cells, this@CalendarView.month ,inputCalendar)
         adapter.setOnItemClickListener(object : CalendarAdapter.OnItemClickListener{
             override fun onItemClick(v: View, year: Int, month: Int, day: Int) {
                 listener?.onItemClick(v, year, month, day)
             }
         })
+
         gridView.adapter = adapter
     }
 
