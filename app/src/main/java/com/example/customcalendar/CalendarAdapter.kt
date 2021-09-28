@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import android.widget.Toast
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -26,7 +27,7 @@ class CalendarAdapter(context: Context, days: ArrayList<Date>, inputMonth: Int, 
     private var inputMonth = inputMonth - 1
     private val day1=days
     private val calender=calendar
-    @SuppressLint("UseCompatLoadingForDrawables")
+
     override fun getView(position: Int, view: View?, parent: ViewGroup): View {
         day1.get(position).month
         var view = view
