@@ -36,7 +36,6 @@ class CalendarView: LinearLayout {
     }
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
     private fun assignUiElements() {
-        // layout is inflated, assign local variables to components
 
         gridView = findViewById(R.id.calendar)!!
     }
@@ -44,9 +43,11 @@ class CalendarView: LinearLayout {
 
     fun updateCalendar(inputCalendar: Calendar) {
         val cells = ArrayList<Date>()
+
         this@CalendarView.year=inputCalendar.get(Calendar.YEAR)
         this@CalendarView.month=inputCalendar.get(Calendar.MONTH)+1
         this@CalendarView.day=inputCalendar.get(Calendar.DATE)
+
         inputCalendar.set(Calendar.DAY_OF_MONTH, 1)//전부 첫날짜를 1일로 바꿈
 
         // 여기서 빼주는 값 1의 경우 한 주의 시작요일에 따라 다르게 설정해주면 됨.
@@ -62,11 +63,13 @@ class CalendarView: LinearLayout {
 
 
         val adapter=CalendarAdapter(context, cells,this.month,inputCalendar,)
+
         adapter.setOnItemClickListener(object :CalendarAdapter.OnItemClickListener{
             override fun onItemClick(v: View, year: Int, month: Int, day: Int) {
                 listener?.onItemClick(v, year, month, day)
             }
         })
+
         gridView.adapter = adapter
     }
 

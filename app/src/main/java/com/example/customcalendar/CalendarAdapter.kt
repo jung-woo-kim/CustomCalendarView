@@ -38,22 +38,27 @@ class CalendarAdapter(context: Context, days: ArrayList<Date>, inputMonth: Int, 
         val today = Date()
         val calendarToday = Calendar.getInstance()
         calendarToday.time = today // 날짜 디자인으로 먼저 만들어 둔 calendar_day_layout을 inflate
+
         if (view == null) {
             view = inflater.inflate(R.layout.item_calendar, parent, false)
         } // 여기에서 기호에 따라 뷰의 생김새와 일자의 디자인을 변경이 가능.
         (view as TextView).setTypeface(null, Typeface.NORMAL)
         view.setTextColor(Color.parseColor("#595959")) // inputMonth는 ViewPager의 해당 페이지에 출력하는 Month를 표시.
+
         if (month != inputMonth) { // 아래의 경우 해당월이 아닌 경우에는 GridView에 표시되지 않도록 설정한 예.
             view.visibility=View.INVISIBLE
         }
-        if (month == calendarToday.get(Calendar.MONTH) && year == calendarToday.get(Calendar.YEAR) && day == calendarToday.get(Calendar.DATE)) { // 오늘의 날짜에 하고싶은 짓(?)을 정의 } // 날짜를 텍스트뷰에 설정
 
+        if (month == calendarToday.get(Calendar.MONTH) && year == calendarToday.get(Calendar.YEAR) && day == calendarToday.get(Calendar.DATE)) {
+// 오늘의 날짜에 하고싶은 짓(?)을 정의
         }
-        view.text = calendar.get(Calendar.DATE).toString()
+
+        view.text = calendar.get(Calendar.DATE).toString()// 날짜를 텍스트뷰에 설정
         view.setOnClickListener {
             Log.d(month.toString(),day.toString())
             listener?.onItemClick(it,year, month+1, day)
         }
+
         return view
     }
 
