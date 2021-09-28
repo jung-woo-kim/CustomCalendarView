@@ -3,10 +3,13 @@ package com.example.customcalendar
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.GridView
 import android.widget.LinearLayout
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 
 import java.util.*
@@ -56,13 +59,14 @@ class CalendarView: LinearLayout {
             cells.add(inputCalendar.time)
             inputCalendar.add(Calendar.DAY_OF_MONTH, 1)
         } // 그리드 업데이트
-        val adapter=CalendarAdapter(context, cells, this@CalendarView.month ,inputCalendar)
-        adapter.setOnItemClickListener(object : CalendarAdapter.OnItemClickListener{
+
+
+        val adapter=CalendarAdapter(context, cells,this.month,inputCalendar,)
+        adapter.setOnItemClickListener(object :CalendarAdapter.OnItemClickListener{
             override fun onItemClick(v: View, year: Int, month: Int, day: Int) {
                 listener?.onItemClick(v, year, month, day)
             }
         })
-
         gridView.adapter = adapter
     }
 

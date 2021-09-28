@@ -25,11 +25,9 @@ class CalendarAdapter(context: Context, days: ArrayList<Date>, inputMonth: Int, 
     }
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     private var inputMonth = inputMonth - 1
-    private val day1=days
     private val calender=calendar
 
     override fun getView(position: Int, view: View?, parent: ViewGroup): View {
-        day1.get(position).month
         var view = view
         val calendar = calender
         val date = getItem(position)

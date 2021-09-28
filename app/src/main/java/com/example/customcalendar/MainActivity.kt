@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
         val calendar= Calendar.getInstance()
         binding.calendarView.setOnItemClickListener(object :CalendarView.OnItemClickListener{
             override fun onItemClick(v: View, year: Int, month: Int, day: Int) {
