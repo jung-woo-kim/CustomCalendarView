@@ -50,12 +50,11 @@ class CalendarAdapter(context: Context, days: ArrayList<Date>, inputMonth: Int, 
         }
 
         if (month == calendarToday.get(Calendar.MONTH) && year == calendarToday.get(Calendar.YEAR) && day == calendarToday.get(Calendar.DATE)) {
-// 오늘의 날짜에 하고싶은 짓(?)을 정의
+        // 오늘의 날짜에 하고싶은 것을 정의
         }
 
         view.text = calendar.get(Calendar.DATE).toString()// 날짜를 텍스트뷰에 설정
         view.setOnClickListener {
-            Log.d(month.toString(),day.toString())
             listener?.onItemClick(it,year, month+1, day)
         }
 
