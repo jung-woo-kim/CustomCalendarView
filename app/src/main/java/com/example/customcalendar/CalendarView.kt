@@ -73,7 +73,6 @@ class CalendarView: LinearLayout {
         gridView.adapter = adapter
     }
 
-
     @SuppressLint("ServiceCast")
     private fun initControl(context: Context) {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
