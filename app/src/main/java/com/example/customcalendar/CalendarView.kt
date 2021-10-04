@@ -36,7 +36,6 @@ class CalendarView: LinearLayout {
     }
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
     private fun assignUiElements() {
-
         gridView = findViewById(R.id.calendar)!!
     }
 
