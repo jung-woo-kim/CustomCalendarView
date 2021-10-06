@@ -21,7 +21,9 @@ class CalendarView: LinearLayout {
     }
     private var listener : OnItemClickListener? = null
     fun setOnItemClickListener(listener : OnItemClickListener) {
+
         this.listener = listener
+
     }
     lateinit var gridView: GridView
 
